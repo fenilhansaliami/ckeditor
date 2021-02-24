@@ -9,10 +9,27 @@ import Bold from "@ckeditor/ckeditor5-basic-styles/src/bold";
 import Italic from "@ckeditor/ckeditor5-basic-styles/src/italic";
 import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import MathType from "@wiris/mathtype-ckeditor5";
+import ExportPdf from "@ckeditor/ckeditor5-export-pdf/src/exportpdf";
 
 const editorConfiguration = {
-  plugins: [Essentials, Bold, Italic, Paragraph, MathType],
-  toolbar: ["bold", "italic", 'MathType', 'ChemType'],
+  plugins: [Essentials, Bold, Italic, Paragraph, MathType, ExportPdf],
+  toolbar: ["bold", "italic", "MathType", "ChemType", "exportPdf"],
+  exportPdf: {
+    stylesheets: [
+      "./path/to/fonts.css",
+      "EDITOR_STYLES",
+      "./path/to/style.css",
+    ],
+    fileName: "my-file.pdf",
+    converterOptions: {
+      format: "A4",
+      margin_top: "20mm",
+      margin_bottom: "20mm",
+      margin_right: "12mm",
+      margin_left: "12mm",
+      page_orientation: "portrait",
+    },
+  },
 };
 
 function App() {
